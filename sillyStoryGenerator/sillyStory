@@ -1,8 +1,8 @@
 	<!--
-	Name: Your Name
-	File: filename.html
-	Date: XX September 202X
-	A very brief description of the file.
+	Name: Junelle James
+	File: sillyStory.html
+	Date:  July 13 2024
+	Silly story generator
 	-->
     
     <!DOCTYPE html>
@@ -10,6 +10,8 @@
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
+        <script src="main.js" defer></script>
+
     
         <title>Silly story generator</title>
     
