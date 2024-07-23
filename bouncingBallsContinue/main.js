@@ -2,6 +2,8 @@
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+const para = document.querySelector("p")
+
 
 const width = (canvas.width = window.innerWidth);
 const height = (canvas.height = window.innerHeight);
@@ -17,6 +19,7 @@ function random(min, max) {
 function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
+
 
 class Shape {
   constructor(x, y, velX, velY){
@@ -80,9 +83,10 @@ class EvilCircle extends Shape {
       }
     
     }
-
+    
     // detects if the balls collide 
     collisionDetect() {
+      let ballsGone = 0;
       for (const ball of balls) {
         if (ball.exists) {
           const dx = this.x - ball.x;
@@ -91,9 +95,11 @@ class EvilCircle extends Shape {
     
           if (distance < this.size + ball.size) {
             ball.exists = false;
+            ballsGone++;
           }
         }
       }
+      return ballsGone;
       }        
 }
 
@@ -157,6 +163,7 @@ const evilBall = new EvilCircle(20,20);
 
 
 const balls = [];
+let ballCount = 0;
 
 while (balls.length < 25) {
   const size = random(10, 20);
@@ -170,6 +177,7 @@ while (balls.length < 25) {
     randomRGB(),
     size,
   );
+  ballCount++;
 
   balls.push(ball);
 }
@@ -189,7 +197,8 @@ function loop() {
       evilBall.draw();
       evilBall.checkBounds();
       evilBall.collisionDetect();
-    
+
+      para.textContent = "Ball Count:" + ballCount;
   
     requestAnimationFrame(loop);
   }
@@ -197,6 +206,8 @@ function loop() {
   
 
   loop();
+
+
 
 
 
