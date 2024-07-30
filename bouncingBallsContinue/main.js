@@ -197,6 +197,7 @@ function loop() {
       evilBall.draw();
       evilBall.checkBounds();
       evilBall.collisionDetect();
+      ballCount -= evilBall.collisionDetect();
 
       para.textContent = "Ball Count:" + ballCount;
   
